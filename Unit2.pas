@@ -14,8 +14,12 @@ type
     Barang1: TMenuItem;
     kustomer1: TMenuItem;
     img1: TImage;
+    supplier1: TMenuItem;
+    penjualan1: TMenuItem;
     procedure Barang1Click(Sender: TObject);
     procedure kustomer1Click(Sender: TObject);
+    procedure supplier1Click(Sender: TObject);
+    procedure penjualan1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -27,7 +31,7 @@ var
 
 implementation
 
-uses Unit3, Unit4;
+uses Unit3, Unit4, Unit5, Unit6;
 
 {$R *.dfm}
 
@@ -39,6 +43,16 @@ end;
 procedure TForm2.kustomer1Click(Sender: TObject);
 begin
 Form4.Show;
+end;
+
+procedure TForm2.supplier1Click(Sender: TObject);
+begin
+Form5.Show;
+end;
+
+procedure TForm2.penjualan1Click(Sender: TObject);
+begin
+Form6.Show;
 end;
 
 end.

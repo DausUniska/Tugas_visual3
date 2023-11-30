@@ -1,6 +1,6 @@
 object Form4: TForm4
-  Left = 219
-  Top = 286
+  Left = 288
+  Top = 51
   Width = 928
   Height = 481
   Caption = 'TABEL KUSTOMER'
