@@ -5,10 +5,12 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, frxClass, frxDBSet, DB, ZAbstractRODataset, ZAbstractDataset,
-  ZDataset, ZAbstractConnection, ZConnection, StdCtrls, Grids, DBGrids;
+  ZDataset, ZAbstractConnection, ZConnection, StdCtrls, Grids, DBGrids,
+  jpeg, ExtCtrls;
 
 type
   TForm4 = class(TForm)
+    Image1: TImage;
     l2: TLabel;
     l1: TLabel;
     l3: TLabel;
@@ -61,6 +63,7 @@ uses Unit2, Unit3;
 
 procedure TForm4.b1Click(Sender: TObject);
 begin
+bersih;
 b1.Enabled:= False;
 b2.Enabled:= True;
 b3.Enabled:= False;
@@ -110,6 +113,7 @@ zqry1.SQL.Add('insert into tbl_kustomer values("'+e_1.Text+'","'+e_2.Text+'","'+
  zqry1.SQL.Add('select * from tbl_kustomer');
  zqry1.Open;
 ShowMessage('DATA BARHASIL DISIMPAN!');
+posisiawal;
 end;
 end;
 
@@ -122,17 +126,19 @@ end else
 if e_1.Text = zqry1.Fields[1].AsString then
 begin
  ShowMessage('DATA TIDAK ADA PERUBAHAN');
+ posisiawal;
 end else
 begin
  ShowMessage('DATA BERHASIL DIUPDATE!');
 zqry1.SQL.Clear;
-zqry1.SQL.Add('Update tbl_kustomer set id= "'+e_1.Text+'",nama_pelanggan="'+e_2.Text+'",alamat="'+e_3.Text+'",telepon="'+e_4.Text+'",email="'+e_5.Text+'" where id="'+id+'"');
+zqry1.SQL.Add('Update tbl_kustomer set nama_pelanggan="'+e_2.Text+'",alamat="'+e_3.Text+'",telepon="'+e_4.Text+'",email="'+e_5.Text+'" where id="'+id+'"');
 zqry1. ExecSQL;
 
 zqry1.SQL.Clear;
 zqry1.SQL.Add('select * from tbl_kustomer');
 zqry1.Open;
 
+posisiawal;
 end;
 end;
 
@@ -151,6 +157,7 @@ posisiawal;
 end else
 begin
  ShowMessage('DATA BATAL DIHAPUS');
+ posisiawal;
 
 end
 end;
@@ -162,6 +169,7 @@ end;
 
 procedure TForm4.posisiawal;
 begin
+bersih;
 b1.Enabled:= True;
 b2.Enabled:= False;
 b3.Enabled:= False;
@@ -216,18 +224,7 @@ end;
 
 procedure TForm4.FormShow(Sender: TObject);
 begin
-bersih;
-b1.Enabled:=true;
-b2.Enabled:=false;
-b3.Enabled:=false;
-b4.Enabled:=false;
-b5.Enabled:=false;
-b6.Enabled:=false;
-e_1.Enabled:= false;
-e_2.Enabled:= false;
-e_3.Enabled:= false;
-e_4.Enabled:= false;
-e_5.Enabled:= false;
+posisiawal;
 end;
 
 end.

@@ -5,10 +5,12 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, frxClass, frxDBSet, DB, ZAbstractRODataset, ZAbstractDataset,
-  ZDataset, ZAbstractConnection, ZConnection, StdCtrls, Grids, DBGrids;
+  ZDataset, ZAbstractConnection, ZConnection, StdCtrls, Grids, DBGrids,
+  jpeg, ExtCtrls;
 
 type
   TForm6 = class(TForm)
+    Image1: TImage;
     l2: TLabel;
     l1: TLabel;
     l3: TLabel;
@@ -28,16 +30,16 @@ type
     e_4: TEdit;
     e_5: TEdit;
     e_6: TEdit;
+    e_7: TEdit;
+    e_8: TEdit;
+    e_9: TEdit;
+    e_10: TEdit;
     con1: TZConnection;
     zqry1: TZQuery;
     ds1: TDataSource;
     frxDBDataset1: TfrxDBDataset;
     frxReport1: TfrxReport;
     zqry2: TZQuery;
-    e_7: TEdit;
-    e_8: TEdit;
-    e_9: TEdit;
-    e_10: TEdit;
     procedure b1Click(Sender: TObject);
     procedure b2Click(Sender: TObject);
     procedure b3Click(Sender: TObject);
@@ -64,6 +66,7 @@ implementation
 
 procedure TForm6.b1Click(Sender: TObject);
 begin
+bersih;
 b1.Enabled:= False;
 b2.Enabled:= True;
 b3.Enabled:= False;
@@ -154,7 +157,7 @@ end else
 begin
  ShowMessage('DATA BERHASIL DIUPDATE!');
 zqry1.SQL.Clear;
-zqry1.SQL.Add('Update tbl_penjualan set id= "'+e_1.Text+'",barang_id="'+e_2.Text+'",tanggal_pembayaran="'+e_3.Text+'",jumlah="'+e_4.Text+'",harga_beli="'+e_5.Text+'",metode_pembayaran="'+e_6.Text+'",merk= "'+e_7.Text+'",nama_barang="'+e_8.Text+'",total="'+e_9.Text+'",kustomer_id="'+e_10.Text+'" where id="'+id+'"');
+zqry1.SQL.Add('Update tbl_penjualan set barang_id="'+e_2.Text+'",tanggal_pembayaran="'+e_3.Text+'",jumlah="'+e_4.Text+'",harga_beli="'+e_5.Text+'",metode_pembayaran="'+e_6.Text+'",merk= "'+e_7.Text+'",nama_barang="'+e_8.Text+'",total="'+e_9.Text+'",kustomer_id="'+e_10.Text+'" where id="'+id+'"');
 zqry1. ExecSQL;
 
 zqry1.SQL.Clear;
@@ -190,6 +193,7 @@ end;
 
 procedure TForm6.posisiawal;
 begin
+bersih;
 b1.Enabled:= True;
 b2.Enabled:= False;
 b3.Enabled:= False;
@@ -263,23 +267,7 @@ end;
 
 procedure TForm6.FormShow(Sender: TObject);
 begin
-bersih;
-b1.Enabled:=true;
-b2.Enabled:=false;
-b3.Enabled:=false;
-b4.Enabled:=false;
-b5.Enabled:=false;
-b6.Enabled:=false;
-e_1.Enabled:= false;
-e_2.Enabled:= false;
-e_3.Enabled:= false;
-e_4.Enabled:= false;
-e_5.Enabled:= false;
-e_6.Enabled:= false;
-e_7.Enabled:= false;
-e_8.Enabled:= false;
-e_9.Enabled:= false;
-e_10.Enabled:= false;
+posisiawal;
 end;
 
 end.

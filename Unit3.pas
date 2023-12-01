@@ -5,11 +5,12 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, frxClass, frxDBSet, DB, ZAbstractRODataset, ZAbstractDataset,
-  ZDataset, ZAbstractConnection, ZConnection, StdCtrls, Grids, DBGrids;
+  ZDataset, ZAbstractConnection, ZConnection, StdCtrls, Grids, DBGrids,
+  jpeg, ExtCtrls;
 
 type
   TForm3 = class(TForm)
-    l2: TLabel;
+    Image1: TImage;
     l1: TLabel;
     l3: TLabel;
     l6: TLabel;
@@ -59,6 +60,7 @@ implementation
 
 procedure TForm3.b1Click(Sender: TObject);
 begin
+bersih;
 b1.Enabled:= False;
 b2.Enabled:= True;
 b3.Enabled:= False;
@@ -108,6 +110,7 @@ zqry1.SQL.Add('insert into tbl_barang values("'+e_1.Text+'","'+e_2.Text+'","'+e_
  zqry1.SQL.Add('select * from tbl_barang');
  zqry1.Open;
 ShowMessage('DATA BARHASIL DISIMPAN!');
+posisiawal;
 end;
 end;
 
@@ -120,17 +123,19 @@ end else
 if e_1.Text = zqry1.Fields[1].AsString then
 begin
  ShowMessage('DATA TIDAK ADA PERUBAHAN');
+ posisiawal;
 end else
 begin
  ShowMessage('DATA BERHASIL DIUPDATE!');
 zqry1.SQL.Clear;
-zqry1.SQL.Add('Update tbl_barang set id= "'+e_1.Text+'",merk="'+e_2.Text+'",nama_barang="'+e_3.Text+'",stok="'+e_4.Text+'" where id="'+id+'"');
+zqry1.SQL.Add('Update tbl_barang set merk="'+e_2.Text+'",nama_barang="'+e_3.Text+'",stok="'+e_4.Text+'",harga_jual="'+e_5.Text+'" where id="'+id+'"');
 zqry1. ExecSQL;
 
 zqry1.SQL.Clear;
 zqry1.SQL.Add('select * from tbl_barang');
 zqry1.Open;
 
+posisiawal;
 end;
 end;
 
@@ -149,6 +154,7 @@ posisiawal;
 end else
 begin
  ShowMessage('DATA BATAL DIHAPUS');
+ posisiawal;
 
 end
 end;
@@ -160,6 +166,7 @@ end;
 
 procedure TForm3.posisiawal;
 begin
+bersih;
 b1.Enabled:= True;
 b2.Enabled:= False;
 b3.Enabled:= False;
@@ -213,19 +220,10 @@ end;
 
 procedure TForm3.FormShow(Sender: TObject);
 begin
-bersih;
-b1.Enabled:=true;
-b2.Enabled:=false;
-b3.Enabled:=false;
-b4.Enabled:=false;
-b5.Enabled:=false;
-b6.Enabled:=false;
-e_1.Enabled:= false;
-e_2.Enabled:= false;
-e_3.Enabled:= false;
-e_4.Enabled:= false;
-e_5.Enabled:= false;
+posisiawal;
 
 end;
+
+
 
 end.

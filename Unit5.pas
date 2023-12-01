@@ -5,10 +5,12 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, frxClass, frxDBSet, DB, ZAbstractRODataset, ZAbstractDataset,
-  ZDataset, ZAbstractConnection, ZConnection, StdCtrls, Grids, DBGrids;
+  ZDataset, ZAbstractConnection, ZConnection, StdCtrls, Grids, DBGrids,
+  jpeg, ExtCtrls;
 
 type
   TForm5 = class(TForm)
+    Image1: TImage;
     l2: TLabel;
     l1: TLabel;
     l3: TLabel;
@@ -27,13 +29,13 @@ type
     e_3: TEdit;
     e_4: TEdit;
     e_5: TEdit;
+    e_6: TEdit;
     con1: TZConnection;
     zqry1: TZQuery;
     ds1: TDataSource;
     frxDBDataset1: TfrxDBDataset;
     frxReport1: TfrxReport;
     zqry2: TZQuery;
-    e_6: TEdit;
     procedure b1Click(Sender: TObject);
     procedure b2Click(Sender: TObject);
     procedure b3Click(Sender: TObject);
@@ -62,6 +64,7 @@ uses Unit3;
 
 procedure TForm5.b1Click(Sender: TObject);
 begin
+bersih;
 b1.Enabled:= False;
 b2.Enabled:= True;
 b3.Enabled:= False;
@@ -132,7 +135,7 @@ end else
 begin
  ShowMessage('DATA BERHASIL DIUPDATE!');
 zqry1.SQL.Clear;
-zqry1.SQL.Add('Update tbl_supplier set id= "'+e_1.Text+'",nama_pt="'+e_2.Text+'",alamat_pt="'+e_3.Text+'",nama_supplier="'+e_4.Text+'",alamat="'+e_5.Text+'",telepon="'+e_6.Text+'" where id="'+id+'"');
+zqry1.SQL.Add('Update tbl_supplier set nama_pt="'+e_2.Text+'",alamat_pt="'+e_3.Text+'",nama_supplier="'+e_4.Text+'",alamat="'+e_5.Text+'",telepon="'+e_6.Text+'" where id="'+id+'"');
 zqry1. ExecSQL;
 
 zqry1.SQL.Clear;
@@ -168,6 +171,7 @@ end;
 
 procedure TForm5.posisiawal;
 begin
+bersih;
 b1.Enabled:= True;
 b2.Enabled:= False;
 b3.Enabled:= False;
@@ -225,19 +229,9 @@ end;
 
 procedure TForm5.FormShow(Sender: TObject);
 begin
-bersih;
-b1.Enabled:=true;
-b2.Enabled:=false;
-b3.Enabled:=false;
-b4.Enabled:=false;
-b5.Enabled:=false;
-b6.Enabled:=false;
-e_1.Enabled:= false;
-e_2.Enabled:= false;
-e_3.Enabled:= false;
-e_4.Enabled:= false;
-e_5.Enabled:= false;
-e_6.Enabled:= false;
+posisiawal;
 end;
+
+
 
 end.

@@ -16,10 +16,13 @@ type
     img1: TImage;
     supplier1: TMenuItem;
     penjualan1: TMenuItem;
+    cekstok1: TMenuItem;
     procedure Barang1Click(Sender: TObject);
     procedure kustomer1Click(Sender: TObject);
     procedure supplier1Click(Sender: TObject);
     procedure penjualan1Click(Sender: TObject);
+    procedure Logout1Click(Sender: TObject);
+    procedure cekstok1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -31,7 +34,7 @@ var
 
 implementation
 
-uses Unit3, Unit4, Unit5, Unit6;
+uses Unit3, Unit4, Unit5, Unit6, Unit7;
 
 {$R *.dfm}
 
@@ -53,6 +56,20 @@ end;
 procedure TForm2.penjualan1Click(Sender: TObject);
 begin
 Form6.Show;
+end;
+
+procedure TForm2.Logout1Click(Sender: TObject);
+begin
+if application.MessageBox('Yakin ingin logout?','Konfirmasi Ulang',MB_YesNo)=ID_Yes then
+begin
+Form2.Close;
+end;
+end;
+
+
+procedure TForm2.cekstok1Click(Sender: TObject);
+begin
+Form7.Show;
 end;
 
 end.

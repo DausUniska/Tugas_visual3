@@ -9,6 +9,7 @@ uses
 
 type
   TForm1 = class(TForm)
+    Image1: TImage;
     lbl1: TLabel;
     lbl2: TLabel;
     lbl3: TLabel;
@@ -58,7 +59,7 @@ begin
       if level = 'admin' then
       begin
         // Pengguna berhasil login sebagai admin
-        ShowMessage('Admin login successful');
+        ShowMessage('Login admin berhasil!');
         Form2.Show;
       end;
     end
