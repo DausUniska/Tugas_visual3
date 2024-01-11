@@ -150,7 +150,7 @@ if (e_1.Text= '')or (e_2.Text ='')or(e_3.Text= '')or (e_4.Text ='')or(e_5.Text =
 begin
   ShowMessage('INPUTAN WAJIB DIISI!');
 end else
-if e_1.Text = zqry1.Fields[1].AsString then
+if e_1.Text = zqry1.Fields[0].AsString then
 begin
  ShowMessage('DATA TIDAK ADA PERUBAHAN');
 end else

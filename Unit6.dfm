@@ -1,6 +1,6 @@
 object Form6: TForm6
-  Left = 223
-  Top = 143
+  Left = 225
+  Top = 262
   Width = 928
   Height = 480
   Caption = 'TABEL PENJUALAN'
@@ -5783,6 +5783,67 @@ object Form6: TForm6
     TitleFont.Name = 'Tahoma'
     TitleFont.Style = []
     OnCellClick = dbgrd1CellClick
+    Columns = <
+      item
+        Expanded = False
+        FieldName = 'id'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'barang_id'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'tanggal_pembayaran'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'jumlah'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'harga_beli'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'metode_pembayaran'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'merk'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'nama_barang'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'total'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'kustomer_id'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'barang_id_1'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'kustomer_id_1'
+        Visible = True
+      end>
   end
   object b1: TButton
     Left = 116
@@ -5926,7 +5987,17 @@ object Form6: TForm6
     Connection = con1
     Active = True
     SQL.Strings = (
-      'select * from tbl_penjualan')
+      
+        'SELECT tbl_penjualan.id, tbl_penjualan.barang_id, tbl_penjualan.' +
+        'tanggal_pembayaran,tbl_penjualan.jumlah, tbl_penjualan.harga_bel' +
+        'i, tbl_penjualan.metode_pembayaran, tbl_penjualan.merk, tbl_penj' +
+        'ualan.nama_barang, tbl_penjualan.total, tbl_penjualan.kustomer_i' +
+        'd, tbl_barang.barang_id, tbl_kustomer.kustomer_id FROM ((tbl_pen' +
+        'jualan INNER JOIN tbl_barang ON tbl_penjualan.barang_id = tbl_ba' +
+        'rang.barang_id) '
+      
+        'INNER JOIN tbl_kustomer ON tbl_penjualan.kustomer_id = tbl_kusto' +
+        'mer.kustomer_id);')
     Params = <>
     Left = 76
     Top = 224

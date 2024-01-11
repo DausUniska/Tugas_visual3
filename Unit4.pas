@@ -30,11 +30,11 @@ type
     e_4: TEdit;
     e_5: TEdit;
     con1: TZConnection;
-    zqry1: TZQuery;
     ds1: TDataSource;
     frxDBDataset1: TfrxDBDataset;
     frxReport1: TfrxReport;
     zqry2: TZQuery;
+    zqry1: TZQuery;
     procedure b1Click(Sender: TObject);
     procedure b2Click(Sender: TObject);
     procedure b3Click(Sender: TObject);
@@ -53,7 +53,7 @@ type
 
 var
   Form4: TForm4;
-  id:string;
+  kustomer_id:string;
 
 implementation
 
@@ -99,7 +99,7 @@ if e_1.Text='' then
     begin
      ShowMessage('EMAIL  BELUM SESUAI');
      end else
-  if Form3.zqry1.Locate('id',e_1.Text,[]) then
+  if Form4.zqry1.Locate('kustomer_id',e_1.Text,[]) then
   begin
    ShowMessage('DATA SUDAH ADA DALAM SISTEM');
   end else
@@ -123,7 +123,7 @@ if (e_1.Text= '')or (e_2.Text ='')or(e_3.Text= '')or (e_4.Text ='')or(e_5.Text =
 begin
   ShowMessage('INPUTAN WAJIB DIISI!');
 end else
-if e_1.Text = zqry1.Fields[1].AsString then
+if e_2.Text = zqry1.Fields[1].AsString then
 begin
  ShowMessage('DATA TIDAK ADA PERUBAHAN');
  posisiawal;
@@ -131,7 +131,7 @@ end else
 begin
  ShowMessage('DATA BERHASIL DIUPDATE!');
 zqry1.SQL.Clear;
-zqry1.SQL.Add('Update tbl_kustomer set nama_pelanggan="'+e_2.Text+'",alamat="'+e_3.Text+'",telepon="'+e_4.Text+'",email="'+e_5.Text+'" where id="'+id+'"');
+zqry1.SQL.Add('Update tbl_kustomer set nama_pelanggan="'+e_2.Text+'",alamat="'+e_3.Text+'",telepon="'+e_4.Text+'",email="'+e_5.Text+'" where kustomer_id="'+kustomer_id+'"');
 zqry1. ExecSQL;
 
 zqry1.SQL.Clear;
@@ -147,7 +147,7 @@ begin
 if MessageDlg('APAKAH YAKIN MENGHAPUS DATA INI?',mtWarning,[mbYes,mbNo],0)= mryes then
 begin
 zqry1.SQL.Clear;
-zqry1.SQL.Add(' delete from tbl_kustomer where id="'+id+'"');
+zqry1.SQL.Add(' delete from tbl_kustomer where kustomer_id="'+kustomer_id+'"');
 zqry1. ExecSQL;
 zqry1.SQL.Clear;
 zqry1.SQL.Add('select * from tbl_kustomer');
@@ -199,7 +199,7 @@ end;
 
 procedure TForm4.dbgrd1CellClick(Column: TColumn);
 begin
-id:= zqry1.Fields[0].AsString;
+kustomer_id:= zqry1.Fields[0].AsString;
 e_2.Text:= zqry1.Fields[1].AsString;
 e_3.Text:= zqry1.Fields[2].AsString;
 e_4.Text:= zqry1.Fields[3].AsString;
@@ -226,5 +226,6 @@ procedure TForm4.FormShow(Sender: TObject);
 begin
 posisiawal;
 end;
+
 
 end.

@@ -52,7 +52,7 @@ type
 
 var
  Form3: TForm3;
-    id:string;
+    barang_id:string;
 
 implementation
 
@@ -96,7 +96,7 @@ if e_1.Text='' then
     begin
      ShowMessage('HARGA JUAL  BELUM SESUAI');
      end else
-  if Form3.zqry1.Locate('id',e_1.Text,[]) then
+  if Form3.zqry1.Locate('barang_id',e_1.Text,[]) then
   begin
    ShowMessage('DATA SUDAH ADA DALAM SISTEM');
   end else
@@ -128,7 +128,7 @@ end else
 begin
  ShowMessage('DATA BERHASIL DIUPDATE!');
 zqry1.SQL.Clear;
-zqry1.SQL.Add('Update tbl_barang set merk="'+e_2.Text+'",nama_barang="'+e_3.Text+'",stok="'+e_4.Text+'",harga_jual="'+e_5.Text+'" where id="'+id+'"');
+zqry1.SQL.Add('Update tbl_barang set merk="'+e_2.Text+'",nama_barang="'+e_3.Text+'",stok="'+e_4.Text+'",harga_jual="'+e_5.Text+'" where barang_id="'+barang_id+'"');
 zqry1. ExecSQL;
 
 zqry1.SQL.Clear;
@@ -144,7 +144,7 @@ begin
 if MessageDlg('APAKAH YAKIN MENGHAPUS DATA INI?',mtWarning,[mbYes,mbNo],0)= mryes then
 begin
 zqry1.SQL.Clear;
-zqry1.SQL.Add(' delete from tbl_barang where id="'+id+'"');
+zqry1.SQL.Add(' delete from tbl_barang where barang_id="'+barang_id+'"');
 zqry1. ExecSQL;
 zqry1.SQL.Clear;
 zqry1.SQL.Add('select * from tbl_barang');
@@ -182,7 +182,7 @@ end;
 
 procedure TForm3.dbgrd1CellClick(Column: TColumn);
 begin
-id:= zqry1.Fields[0].AsString;
+barang_id:= zqry1.Fields[0].AsString;
 e_2.Text:= zqry1.Fields[1].AsString;
 e_3.Text:= zqry1.Fields[2].AsString;
 e_4.Text:= zqry1.Fields[3].AsString;

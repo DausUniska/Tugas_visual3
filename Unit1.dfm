@@ -5689,6 +5689,7 @@ object Form1: TForm1
     Font.Name = 'Times New Roman'
     Font.Style = []
     ParentFont = False
+    PasswordChar = '*'
     TabOrder = 0
   end
   object e_1: TEdit
@@ -5705,8 +5706,8 @@ object Form1: TForm1
     TabOrder = 1
   end
   object btn1: TButton
-    Left = 160
-    Top = 224
+    Left = 120
+    Top = 248
     Width = 75
     Height = 25
     Caption = 'LOGIN'
@@ -5718,6 +5719,26 @@ object Form1: TForm1
     ParentFont = False
     TabOrder = 2
     OnClick = btn1Click
+  end
+  object btn2: TButton
+    Left = 216
+    Top = 248
+    Width = 75
+    Height = 25
+    Caption = 'REGISTER'
+    TabOrder = 3
+    OnClick = btn2Click
+  end
+  object ckb1: TCheckBox
+    Left = 160
+    Top = 200
+    Width = 121
+    Height = 17
+    Caption = 'Tampilkan Password'
+    Color = clWindow
+    ParentColor = False
+    TabOrder = 4
+    OnClick = ckb1Click
   end
   object zqry: TZQuery
     Connection = con

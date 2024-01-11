@@ -1,6 +1,6 @@
 object Form4: TForm4
-  Left = 279
-  Top = 117
+  Left = 369
+  Top = 167
   Width = 928
   Height = 481
   Caption = 'TABEL KUSTOMER'
@@ -5718,6 +5718,32 @@ object Form4: TForm4
     TitleFont.Name = 'Tahoma'
     TitleFont.Style = []
     OnCellClick = dbgrd1CellClick
+    Columns = <
+      item
+        Expanded = False
+        FieldName = 'kustomer_id'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'nama_pelanggan'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'alamat'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'telepon'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'email'
+        Visible = True
+      end>
   end
   object b1: TButton
     Left = 116
@@ -5821,15 +5847,6 @@ object Form4: TForm4
     LibraryLocation = 'D:\VISUAL 3 SEM 5\Tugas_Visual3\libmysql.dll'
     Left = 8
     Top = 220
-  end
-  object zqry1: TZQuery
-    Connection = con1
-    Active = True
-    SQL.Strings = (
-      'select * from tbl_kustomer')
-    Params = <>
-    Left = 76
-    Top = 224
   end
   object ds1: TDataSource
     DataSet = zqry1
@@ -6102,5 +6119,14 @@ object Form4: TForm4
     Params = <>
     Left = 808
     Top = 132
+  end
+  object zqry1: TZQuery
+    Connection = con1
+    Active = True
+    SQL.Strings = (
+      'select*from tbl_kustomer')
+    Params = <>
+    Left = 76
+    Top = 224
   end
 end

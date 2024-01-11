@@ -1,6 +1,6 @@
 object Form3: TForm3
-  Left = 359
-  Top = 159
+  Left = 356
+  Top = 124
   Width = 928
   Height = 480
   Caption = 'TABEL BARANG'
@@ -5823,7 +5823,7 @@ object Form3: TForm3
       'select * from tbl_barang')
     Params = <>
     Left = 76
-    Top = 224
+    Top = 216
   end
   object ds1: TDataSource
     DataSet = zqry1

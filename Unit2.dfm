@@ -1,6 +1,6 @@
 object Form2: TForm2
-  Left = 330
-  Top = 239
+  Left = 333
+  Top = 271
   Width = 637
   Height = 480
   Caption = 'TAMPILAN'

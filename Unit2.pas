@@ -60,10 +60,10 @@ end;
 
 procedure TForm2.Logout1Click(Sender: TObject);
 begin
-if application.MessageBox('Yakin ingin logout?','Konfirmasi Ulang',MB_YesNo)=ID_Yes then
-begin
-Form2.Close;
-end;
+ if MessageDlg('APAKAH ANDA YAKIN INGIN KELUAR?',mtWarning,[mbYes,mbNo],0)= mryes then
+   begin
+       Application.Terminate;
+   end;
 end;
 
 
